@@ -21,3 +21,27 @@ a {
 .b-search__bt {
   cursor: pointer;
 }
+.expanded {
+  display: block;
+}
+.b-result {
+  display: none;
+  width: 80%;
+  margin: 40px auto;
+}
+.expanded .b-result {
+  display: block;
+}
+.b-result img {
+  width: 50px;
+  border-radius: 50%;
+}
+.list-group__name {
+  font-size: 18px;
+}
+.list-group-item > * {
+  margin-right: 20px;
+}
+.badge {
+  margin-right: 0;
+}

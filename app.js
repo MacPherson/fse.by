@@ -4,29 +4,6 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var GitHubApi = require("github");
-
-var github = new GitHubApi({
-    version: "3.0.0"
-});
-
-github.search.repos({
-    q: "scroll"
-}, function(err, res) {
-    var result = {
-        total_count: 0,
-        items: []
-    };
-    res.items.forEach(function(item) {
-        result.items.push({
-            name: item.name,
-            archive_url: item.html_url + '/archive/master.zip',
-            avatar_url: item.owner.avatar_url
-        });
-    });
-    result.total_count = res.total_count;
-    console.log(result);
-});
 
 var mongo = require('mongodb');
 var monk = require('monk');

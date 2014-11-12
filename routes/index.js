@@ -1,5 +1,10 @@
 var express = require('express');
 var router = express.Router();
+var GitHubApi = require("github");
+
+var github = new GitHubApi({
+  version: "3.0.0"
+});
 
 /* GET home page. */
 router.get('/', function(req, res) {
@@ -45,6 +50,30 @@ router.post('/adduser', function(req, res) {
       res.redirect('userlist');
     }
   })
-})
+});
+
+router.post('/search', function(req, res) {
+  var query = req.body.query;
+
+  github.search.repos({
+    q: query
+  }, function(_err, _res) {
+    var result = {
+      total_count: 0,
+      items: []
+    };
+    _res && _res.items.forEach(function(item) {
+      result.items.push({
+        name: item.name,
+        archive_url: item.html_url + '/archive/master.zip',
+        avatar_url: item.owner.avatar_url,
+        watchers: item.watchers
+      });
+    });
+    result.total_count = res.total_count;
+    console.log(_res && _res.items)
+    res.send(result);
+  });
+});
 
 module.exports = router;
