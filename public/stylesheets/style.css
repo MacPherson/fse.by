@@ -1,0 +1,23 @@
+html, body {
+  height: 100%;
+}
+
+body {
+  font: 14px Helvetica, Arial, sans-serif;
+  display: flex;
+}
+
+a {
+  color: #00B7FF;
+}
+.b-search {
+  width: 50%;
+  min-width: 300px;
+  margin: auto;
+}
+.b-search__t {
+  margin-top: 0;
+}
+.b-search__bt {
+  cursor: pointer;
+}

@@ -1,0 +1,9 @@
+extends layout
+
+block content
+  div(class="b-search")
+    h1(class="b-search__t")= title
+    form(class="input-group input-group-lg")
+        input(type="text" class="form-control" placeholder="Введите название технологии")
+        div(class="input-group-addon b-search__bt")
+          span(class="glyphicon glyphicon-search")
