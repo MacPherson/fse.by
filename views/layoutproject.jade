@@ -1,0 +1,19 @@
+doctype html
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/normalize.css')
+    link(rel='stylesheet', href='/stylesheets/bootstrap.min.css')
+    link(rel='stylesheet', href='/stylesheets/style.css')
+  body
+    block content
+    script(type="text/template" id="list-title-found")
+      <h4>Всего найдено <%= count %></h4>
+    script(type="text/template" id="list-technologies")
+      <ul class="list-group"><%= template %></ul>
+    script(type="text/template" id="list-technologies__i")
+      <li class="list-group-item"><span class="badge"><%= stars %></span><span class="list-group__name"><%= name %></span><img src="<%= src %>"><a href="<%= href %>"><%= href %></a></li>
+    script(src='/javascripts/libs/jquery.min.js')
+    script(src='/javascripts/libs/underscore-min.js')
+    script(src='/javascripts/libs/bootstrap.min.js')
+    script(src='/javascripts/main.js')

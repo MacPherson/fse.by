@@ -6,18 +6,22 @@ html
     link(rel='stylesheet', href='/stylesheets/bootstrap.min.css')
     link(rel='stylesheet', href='/stylesheets/style.css')
   body
-    block content
-    div(style="display: none")
-      script(type="text/template" id="list-technologies")
-        <ul class="list-group"><%= template %></ul>
-      script(type="text/template" id="list-technologies__i")
-        <li class="list-group-item">
-          <span class="badge">
-          <%= stars %></span>
-          <span class="list-group__name"><%= name %></span>
-          <img src="<%= src %>">
-          <a href="<%= href %>"><%= href %></a>
-        </li>
-    script(src='/javascripts/libs/jquery.min.js')
-    script(src='/javascripts/libs/underscore-min.js')
-    script(src='/javascripts/main.js')
+    header(class="b-header")
+      nav.b-nav
+        a.b-nav__a(href="/projects") Projects
+        a.b-nav__a(href="/archive") Archive
+        a.b-nav__a(href="/about") About
+      h1(class="b-header__t")
+       a(href="/") Maksim Troitski
+      h2(class="b-header__subt")
+        b Frontend
+        | &nbsp;
+        | with
+        | &nbsp;
+        b Love
+        | &nbsp;
+        | from
+        | &nbsp;
+        b Minsk
+    main.main
+      block content

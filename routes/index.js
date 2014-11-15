@@ -1,6 +1,8 @@
 var express = require('express');
 var router = express.Router();
-var GitHubApi = require("github");
+var GitHubApi = require('github');
+var cdnjs = require('cdnjs');
+var Q = require('q');
 
 var github = new GitHubApi({
   version: "3.0.0"
@@ -52,28 +54,72 @@ router.post('/adduser', function(req, res) {
   })
 });
 
-router.post('/search', function(req, res) {
-  var query = req.body.query;
+router.get('/devpack', function(req, res) {
+  res.render('devpack', { title: 'Devpack' });
+});
+
+router.get('/projects', function(req, res) {
+  res.render('projects', { title: 'Devpack' });
+});
+
+router.get('/archive', function(req, res) {
+  res.render('archive', { title: 'Devpack' });
+});
+
+router.get('/about', function(req, res) {
+  res.render('about', { title: 'Devpack' });
+});
+
+router.get('/search', searchCtrl);
+
+function searchCtrl(req, res, next) {
+  console.log('search...')
+  var query = req.query.query || req.body.query;
+
+  var end = {
+    cdnjs: false,
+    github: false
+  }
+
+  var result = {
+    total_count: 0,
+    items: []
+  };
+
+  cdnjs.search(query, function (err, packages) {
+    packages && packages.forEach(function(_package) {
+      result.items.push({
+        name: _package.name,
+        archive_url: _package.url,
+        avatar_url: '',
+        watchers: '',
+        type: 'cdnjs'
+      })
+    });
+    end.cdnjs = true;
+    if (end.github) {
+      res.send(result);
+    }
+  });
 
   github.search.repos({
     q: query
   }, function(_err, _res) {
-    var result = {
-      total_count: 0,
-      items: []
-    };
     _res && _res.items.forEach(function(item) {
       result.items.push({
         name: item.name,
         archive_url: item.html_url + '/archive/master.zip',
         avatar_url: item.owner.avatar_url,
-        watchers: item.watchers
+        watchers: item.watchers,
+        type: 'github'
       });
     });
     result.total_count = res.total_count;
-    console.log(_res && _res.items)
-    res.send(result);
+    end.github = true;
+    if (end.cdnjs) {
+      res.send(result);
+    }
   });
-});
+}
 
 module.exports = router;

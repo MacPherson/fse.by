@@ -1,0 +1,33 @@
+extends layoutproject
+block content
+  .project
+    div.b-search
+      h1.b-search__t= title
+      form.input-group.input-group-lg(name="search" action="/search" type="get")
+        input.form-control(type="text" placeholder="Введите название технологии" name="query")
+        div.input-group-addon.b-search__bt
+          span.glyphicon.glyphicon-search
+    div.b-result
+      div.b-result-title
+      div.b-result-nav
+        ul.nav.nav-tabs
+          li.active
+            a(href='#') Все
+          li
+            a(href='#') Github
+          li
+            a(href='#') Cdnjs
+      div.b-result-body
+      ul.pagination
+        li.disabled
+          a(href='#test1')
+            span(aria-hidden='true') «
+            span.sr-only Previous
+        li.active
+          a(href='#test2')
+            | 1
+            span.sr-only (current)
+        li
+          a(href='#')
+            | 2
+            span.sr-only (current)

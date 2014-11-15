@@ -1,10 +1,14 @@
-html, body {
+@import "http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700|Merriweather+Sans:400,700,400italic,700italic|Merriweather:400,400italic,700,700italic";
+
+html, body, .project {
   height: 100%;
+}
+.project {
+  display: flex;
 }
 
 body {
-  font: 14px Helvetica, Arial, sans-serif;
-  display: flex;
+  font: 19px "Merriweather",Georgia,serif;
 }
 
 a {
@@ -44,4 +48,22 @@ a {
 }
 .badge {
   margin-right: 0;
+}
+.list-group-item:first-child {
+  border-top: none;
+  border-radius: 0;
+}
+.b-header {
+  height: 320px;
+  background-image: url("/images/default.jpg");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+.b-header__t,
+.b-header__subt {
+  color: #fff;
+  font-size: 40px;
+  margin: 0;
 }

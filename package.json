@@ -17,6 +17,9 @@
     "monk": "*",
     "bootstrap": "*",
     "browserify": "*",
-    "github": "*"
+    "github": "*",
+    "cdnjs": "*",
+    "util": "*",
+    "q": "*"
   }
 }
