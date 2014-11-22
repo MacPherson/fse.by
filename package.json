@@ -21,5 +21,9 @@
     "cdnjs": "*",
     "util": "*",
     "q": "*"
+  },
+  "devDependencies": {
+    "stylus": "*",
+    "nib": "*"
   }
 }

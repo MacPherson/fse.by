@@ -1,4 +1,0 @@
-Host github.com
-  HostName github.com
-  User macpherson
-  IdentityFile ~/.ssh/id_rsa

@@ -7,21 +7,28 @@ html
     link(rel='stylesheet', href='/stylesheets/style.css')
   body
     header(class="b-header")
-      nav.b-nav
-        a.b-nav__a(href="/projects") Projects
-        a.b-nav__a(href="/archive") Archive
-        a.b-nav__a(href="/about") About
-      h1(class="b-header__t")
-       a(href="/") Maksim Troitski
-      h2(class="b-header__subt")
-        b Frontend
-        | &nbsp;
-        | with
-        | &nbsp;
-        b Love
-        | &nbsp;
-        | from
-        | &nbsp;
-        b Minsk
+      div(class="b-header__main")
+        div.b-header-logo
+          img.b-header-logo__img(src="/images/avatar.jpg")
+        h1(class="b-header__t")
+         a(href="/" class="b-header__t__name") Maksim Troitski
+        h2(class="b-header__subt")
+          | Full
+          | Stack
+          | Engineer.
+          | &nbsp;
+          b Frontend
+          | &nbsp;
+          | with
+          | &nbsp;
+          b Love
+          | &nbsp;
+          | from
+          | &nbsp;
+          b Minsk
+        nav.b-nav
+          a.b-nav__a(href="/projects") Projects
+          a.b-nav__a(href="/archive") Archive
+          a.b-nav__a(href="/about") About
     main.main
       block content
