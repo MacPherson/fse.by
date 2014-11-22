@@ -1,3 +1,5 @@
-download frontend technologies by one button click
+#fse.by 
+![Build Status](https://travis-ci.org/MacPherson/devpack.svg?branch=master)](https://travis-ci.org/MacPherson/devpack)
 
-[ ![Codeship Status for MacPherson/devpack](https://codeship.com/projects/4f86f400-5391-0132-0e3c-5e1d8dbac3c9/status)](https://codeship.com/projects/48961)
+This is the source code for [fse.by](http://fse.by/).
+
