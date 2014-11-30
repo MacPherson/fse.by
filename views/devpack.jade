@@ -1,23 +1,30 @@
 extends layoutproject
 block content
-  .project
+  .project(ng-class="{'expanded': expanded}")
     div.b-search
       h1.b-search__t= title
-      form.input-group.input-group-lg(name="search" action="/search" type="get")
-        input.form-control(type="text" placeholder="Введите название технологии" name="query")
+      form.input-group.input-group-lg(ng-submit="submit($event, form)" name="form" action="/search" type="get")
+        input.form-control(ng-model="text" type="text" placeholder="Введите название технологии" name="query")
         div.input-group-addon.b-search__bt
           span.glyphicon.glyphicon-search
     div.b-result
       div.b-result-title
+        h4 Всего найдено {{count}}
       div.b-result-nav
         ul.nav.nav-tabs
-          li.active
-            a(href='#') Все
-          li
-            a(href='#') Github
-          li
-            a(href='#') Cdnjs
+          li(ng-class="{'active': tab === 0}", ng-click="showtab(0)")
+            a(href='#', ng-click="typesearch('')") Все
+          li(ng-class="{'active': tab === 1}", ng-click="showtab(1)")
+            a(href='#', ng-click="typesearch('github')") Github
+          li(ng-class="{'active': tab === 2}", ng-click="showtab(2)")
+            a(href='#', ng-click="typesearch('cdnjs')") Cdnjs
       div.b-result-body
+        ul.list-group
+          li.list-group-item(ng-animate="'animate", ng-repeat="item in items | filter:{type: type}")
+            span.badge {{item.watchers}}
+            span.list-group__name {{ item.name }}
+            img(src="{{item.avatar_url}}")
+            a(href="{{ item.archive_url }}") {{item.archive_url}}
       ul.pagination
         li.disabled
           a(href='#test1')

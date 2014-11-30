@@ -1,4 +1,4 @@
-var search = document.forms.search, xhr;
+/* var search = document.forms.search, xhr;
 var model = [];
 
 function render(model, sort) {
@@ -68,4 +68,43 @@ $('.pagination a').click(function (e) {
 	e.preventDefault()
 	$(this).tab('show');
 
+})*/
+
+var underscore = angular.module('underscore', []);
+underscore.factory('_', function() {
+	return window._
 })
+
+angular.module("app", [])
+	.controller("devpackCtrl", function($scope, $http) {
+		$scope.text = "";
+		$scope.items = [];
+		$scope.expanded = false;
+		$scope.type = '';
+		$scope.tab = 0;
+		$scope.count = 0;
+
+		$scope.showtab = function(index) {
+			console.log(index);
+			$scope.tab = index
+		}
+
+		$scope.typesearch = function(type) {
+			$scope.type = type;
+		}
+
+		$scope.submit = function(event, form) {
+
+			$http({
+				method: 'GET',
+				url: event.target.action,
+				params: {query: this.text}
+			})
+			.success(function(res) {
+				$scope.items = res.items;
+				$scope.expanded = res.items.length > 0;
+				$scope.count = res.items.length;
+			})
+			event.preventDefault();
+		}
+	})

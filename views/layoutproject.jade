@@ -1,11 +1,11 @@
 doctype html
-html
+html(ng-app="app")
   head
     title= title
     link(rel='stylesheet', href='/stylesheets/normalize.css')
     link(rel='stylesheet', href='/stylesheets/bootstrap.min.css')
     link(rel='stylesheet', href='/stylesheets/style.css')
-  body
+  body(ng-controller="devpackCtrl")
     block content
     script(type="text/template" id="list-title-found")
       <h4>Всего найдено <%= count %></h4>
@@ -16,4 +16,5 @@ html
     script(src='/javascripts/libs/jquery.min.js')
     script(src='/javascripts/libs/underscore-min.js')
     script(src='/javascripts/libs/bootstrap.min.js')
+    script(src='/javascripts/libs/angular.min.js')
     script(src='/javascripts/main.js')
