@@ -3,7 +3,7 @@ block content
   .project(ng-class="{'expanded': expanded}")
     div.b-search
       h1.b-search__t= title
-      form.input-group.input-group-lg(ng-submit="submit($event, form)" name="form" action="/search" type="get")
+      form.input-group.input-group-lg(ng-submit="submit($event)" name="form" action="/search" type="get")
         input.form-control(ng-model="text" type="text" placeholder="Введите название технологии" name="query")
         div.input-group-addon.b-search__bt
           span.glyphicon.glyphicon-search
@@ -12,11 +12,11 @@ block content
         h4 Всего найдено {{count}}
       div.b-result-nav
         ul.nav.nav-tabs
-          li(ng-class="{'active': tab === 0}", ng-click="showtab(0)")
+          li(ng-class="{'active': tab === 'all'}", ng-click="showtab('all')")
             a(href='#', ng-click="typesearch('')") Все
-          li(ng-class="{'active': tab === 1}", ng-click="showtab(1)")
+          li(ng-class="{'active': tab === 'github'}", ng-click="showtab('github')")
             a(href='#', ng-click="typesearch('github')") Github
-          li(ng-class="{'active': tab === 2}", ng-click="showtab(2)")
+          li(ng-class="{'active': tab === 'cdnjs'}", ng-click="showtab('cdnjs')")
             a(href='#', ng-click="typesearch('cdnjs')") Cdnjs
       div.b-result-body
         ul.list-group
