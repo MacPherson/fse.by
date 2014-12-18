@@ -1,3 +1,7 @@
 /node_modules
 /.idea
 *.log
+**/*.js.swm
+**/*.js.swn
+**/*.js.swo
+**/*.js.swp
